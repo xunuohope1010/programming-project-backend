@@ -26,7 +26,7 @@ app.config['MYSQL_DB'] = 'mydb'
 mysql = MySQL(app)
 
 # Setup the Flask-JWT-Extended extension
-app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this!
+app.config['JWT_SECRET_KEY'] = 'clerk xu'  # Change this!
 jwt = JWTManager(app)
 CORS(app)
 
@@ -85,7 +85,7 @@ def login():
     # Identity can be any data that is json serializable
     # access_token = create_access_token(identity=username)
     # return jsonify(access_token=access_token), 200
-    expires = datetime.timedelta(seconds=120)
+    expires = datetime.timedelta(hours=1)  # expired in one hour
     token = create_access_token(username, expires_delta=expires)
     return jsonify({'token': token, 'username': username, 'first_name': first_name, 'middle_name': middle_name,
                     'last_name': last_name, 'email': email, 'phone': phone, 'address': address,
